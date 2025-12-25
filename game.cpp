@@ -1,28 +1,26 @@
-#include "snake.h"
 #include "IO.h"
-#include <unistd.h>
 #include "food.h"
+#include "snake.h"
 #include <iostream>
+#include <unistd.h>
 
-int main()
-{
+int main() {
   Terminal t;
   Snake s;
   s.init();
   t.enableRawMode();
   Food f;
   bool grows = false;
-  std::cout<<"Initialization complete\n";
+  std::cout << "Initialization complete\n";
 
-  while (1)
-  {
+  while (1) {
     char c = t.getKeyboardInput();
-    if (c == '\x1B') break; // esc char
-    
+    if (c == '\x1B')
+      break; // esc char
+
     Coordinates bounds = t.getBounds();
 
-    if (f.foundBySnake(s))
-    {
+    if (f.foundBySnake(s)) {
       grows = true;
       s.eats(f);
     }
@@ -34,9 +32,10 @@ int main()
     f.spawn(bounds);
     t.drawFood(f);
     grows = false;
-    if (s.collision()) break;
+    if (s.collision())
+      break;
 
-    usleep(100000); 
+    usleep(100000);
   }
   t.disableRawMode();
   t.clearTerminal();

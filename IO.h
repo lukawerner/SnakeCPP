@@ -5,16 +5,15 @@
 class Snake;
 class Food;
 
-class Terminal
-{
-  public:
-    void clearTerminal();
-    void drawSnake(const Snake& snake);
-    void enableRawMode();
-    void disableRawMode();
-    char getKeyboardInput();
-    Coordinates getBounds();
-    void drawFood(const Food& food);
+class Terminal {
+public:
+  void clearTerminal();
+  void drawSnake(const Snake &snake);
+  void enableRawMode();
+  void disableRawMode();
+  char getKeyboardInput();
+  Coordinates getBounds();
+  void drawFood(const Food &food);
 };
 
 #endif
